@@ -14,5 +14,7 @@ namespace Tahelef.Core.Service
         void DeleteCourse(int id);
          void UpdateCourse(Course course);
         Course GetByCourseId(int id);
+       
+        Task<List<Category>> GetAllCategoryCourse();
     }
 }

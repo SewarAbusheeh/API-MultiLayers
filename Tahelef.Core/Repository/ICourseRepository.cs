@@ -14,5 +14,6 @@ namespace Tahelef.Core.Repository
         void CreateCourse(Course course);
         void UpdateCourse(Course course);
         void DeleteCourse(int id);
+        Task<List<Category>> GetAllCategoryCourse();
     }
 }

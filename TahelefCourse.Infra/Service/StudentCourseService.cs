@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tahelef.Core.DTO;
 using Tahelef.Core.Models;
 using Tahelef.Core.Repository;
 using Tahelef.Core.Service;
+using TahelefCourse.Infra.Repository;
 
 namespace TahelefCourse.Infra.Service
 {
@@ -40,6 +42,14 @@ namespace TahelefCourse.Infra.Service
         public void UpdateStudentCourse(Stdcourse StudentCourse)
         {
             _StudentCourseRepository.UpdateStudentCourse(StudentCourse);
+        }
+        public List<Search> SearcheStudenCourse(Search search)
+        {
+            return _StudentCourseRepository.SearcheStudenCourse(search);
+        }
+        public List<TotalStudents> TotalStudentInEachCourse()
+        {
+            return _StudentCourseRepository.TotalStudentInEachCourse();
         }
     }
 }

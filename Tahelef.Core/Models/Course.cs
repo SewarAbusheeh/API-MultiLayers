@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Tahelef.Core.Models;
 
-public partial class Course
+public  class Course
 {
     public decimal Courseid { get; set; }
 

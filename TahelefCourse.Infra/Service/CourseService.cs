@@ -37,6 +37,10 @@ namespace TahelefCourse.Infra.Service
         {
             return courseRepository.GetByCourseId(id);
         }
+        public  Task<List<Category>> GetAllCategoryCourse()
+        {
+            return  courseRepository.GetAllCategoryCourse();
+        }
 
     }
 }

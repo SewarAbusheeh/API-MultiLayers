@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tahelef.Core.DTO;
 using Tahelef.Core.Models;
 using Tahelef.Core.Repository;
 using TahelefCourse.Core.Common;
@@ -58,6 +59,21 @@ namespace TahelefCourse.Infra.Repository
             p.Add("markof", studentCourse.Marksofstd, dbType: DbType.Int32, direction: ParameterDirection.Input);
             p.Add("dateof_register", studentCourse.Dateofregister, dbType: DbType.DateTime, direction: ParameterDirection.Input);
             var result = dBContext.Connection.ExecuteAsync("stdcourse_Package.UpdateStdCourse", p, commandType: CommandType.StoredProcedure);
+        }
+        public List<Search> SearcheStudenCourse(Search search)
+        {
+            var p = new DynamicParameters();
+            p.Add("sName", search.Firstname, dbType: DbType.String, direction: ParameterDirection.Input);
+            p.Add("DateFrom", search.DateFrom, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("DateTo", search.DateTo, dbType: DbType.DateTime, direction: ParameterDirection.Input);
+            p.Add("cName", search.Coursename, dbType: DbType.String, direction: ParameterDirection.Input);
+            var result = dBContext.Connection.Query<Search>("stdcourse_Package.SearchStudentAndCourse", p, commandType: CommandType.StoredProcedure);
+            return result.ToList();
+        }
+        public List<TotalStudents> TotalStudentInEachCourse()
+        {
+            var result = dBContext.Connection.Query<TotalStudents>("stdcourse_Package.TotalStudentInEachCourse", commandType: CommandType.StoredProcedure);
+            return result.ToList();
         }
     }
 }
